@@ -20,7 +20,7 @@
     <script>
         var myElement = document.getElementById('myElement');
         var mc = new Hammer(myElement);
-        mh.get('pinch').set({ enable: true });　　
+        mc.get('pinch').set({ enable: true });　　
         mc.on("panleft panright tap press pinch", function(ev) {
             myElement.textContent = ev.type +" gesture detected.";
         });

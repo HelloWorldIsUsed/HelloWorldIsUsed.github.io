@@ -82,10 +82,9 @@
             g.computeBoundingBox();
             //3D文字材质
             var m = new THREE.MeshBasicMaterial({ color: 0x98acd2 });
-            var materials = [
-				new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-				new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
-			];
+            materials = [
+					new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } )
+				];
             var mesh = new THREE.Mesh(g, materials);
 
             // 加入到场景中

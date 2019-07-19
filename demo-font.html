@@ -34,7 +34,7 @@
 			scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0x000000 );
 			scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
-            
+
             // CAMERA
 			camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
 			camera.position.set( 0, 400, 700 );
@@ -82,7 +82,11 @@
             g.computeBoundingBox();
             //3D文字材质
             var m = new THREE.MeshBasicMaterial({ color: 0x98acd2 });
-            var mesh = new THREE.Mesh(g, m);
+            var materials = [
+				new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
+				new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+			];
+            var mesh = new THREE.Mesh(g, materials);
 
             // 加入到场景中
             scene.add(mesh);

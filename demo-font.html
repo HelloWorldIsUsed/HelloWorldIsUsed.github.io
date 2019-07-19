@@ -30,10 +30,23 @@
 
         function init(font) {
             // 老三样 场景scene，相机camera，渲染器render
-            scene = new THREE.Scene();
-            // 相机
-            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-            camera.position.set(0, 0, 500);
+            // SCENE
+			scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0x000000 );
+			scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
+            
+            // CAMERA
+			camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
+			camera.position.set( 0, 400, 700 );
+			cameraTarget = new THREE.Vector3( 0, 150, 0 );
+
+            // LIGHTS
+			var dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
+			dirLight.position.set( 0, 0, 1 ).normalize();
+			scene.add( dirLight );
+			var pointLight = new THREE.PointLight( 0xffffff, 1.5 );
+			pointLight.position.set( 0, 100, 90 );
+			scene.add( pointLight );
 
             // 渲染器
             renderer = new THREE.WebGLRenderer();

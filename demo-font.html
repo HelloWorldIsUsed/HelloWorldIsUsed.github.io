@@ -32,8 +32,6 @@
             // 老三样 场景scene，相机camera，渲染器render
             // SCENE
 			scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0x000000 );
-			scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
 
             // CAMERA
 			camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
@@ -85,7 +83,7 @@
             materials = [
 					new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } )
 				];
-            var mesh = new THREE.Mesh(g, m);
+            var mesh = new THREE.Mesh(g, materials);
 
             // 加入到场景中
             scene.add(mesh);

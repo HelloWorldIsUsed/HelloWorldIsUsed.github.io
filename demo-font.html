@@ -33,7 +33,6 @@
             scene = new THREE.Scene();
             // 相机
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-            camera.position.set(0, 10, 500);
 
             // 渲染器
             renderer = new THREE.WebGLRenderer();
@@ -51,7 +50,7 @@
 
 
             // 文字
-            var text = "text3D";
+            var text = "ONENET";
 
 
             var g = new THREE.TextGeometry(text, {
@@ -65,7 +64,7 @@
             //计算边界，暂时不用管
             g.computeBoundingBox();
             //3D文字材质
-            var m = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+            var m = new THREE.MeshBasicMaterial({ color: 0x98acd2 });
             var mesh = new THREE.Mesh(g, m);
 
             // 加入到场景中

@@ -81,7 +81,7 @@
 
 			var container;
 			var camera, scene, renderer;
-			var mesh, geometry, material;
+			var mesh, geometry, material,fontMesh;
 
 			var mouseX = 0, mouseY = 0;
 			var start_time = Date.now();
@@ -175,35 +175,35 @@
                 
                 //导入字体
                 var loader = new THREE.FontLoader();
-        loader.load('./fonts/helvetiker_bold.typeface.json', function (font) {
-            //init(font);
-            //animate();
-            var dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
-			dirLight.position.set( 0, 0, 1 ).normalize();
-			scene.add( dirLight );
-			var pointLight = new THREE.PointLight( 0xffffff, 1.5 );
-			pointLight.position.set( 0, 100, 90 );
-            scene.add( pointLight );
-            // 文字
-            var text = "OneNET";
+                loader.load('./fonts/helvetiker_bold.typeface.json', function (font) {
+                    //init(font);
+                    //animate();
+                    var dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
+		        	dirLight.position.set( 0, 0, 1 ).normalize();
+		        	scene.add( dirLight );
+		        	var pointLight = new THREE.PointLight( 0xffffff, 1.5 );
+		        	pointLight.position.set( 0, 100, 90 );
+                    scene.add( pointLight );
+                    // 文字
+                    var text = "OneNET";
+                
+                    var g = new THREE.TextGeometry(text, {
+                        // 设定文字字体，
+                        font: font,
+                        //尺寸
+                        size: 10,
+                        //厚度
+                        height: 30
+                    });
+                    //文字材质
+                    var materials = new THREE.MeshLambertMaterial({ color: 0xffffff });
+                    fontMesh = new THREE.Mesh(g, materials);
+                
+                    // 加入到场景中
+                    scene.add(fontMesh);
 
-            var g = new THREE.TextGeometry(text, {
-                // 设定文字字体，
-                font: font,
-                //尺寸
-                size: 10,
-                //厚度
-                height: 30
-            });
-            //文字材质
-            var materials = new THREE.MeshLambertMaterial({ color: 0xffffff });
-            var mesh = new THREE.Mesh(g, materials);
-
-            // 加入到场景中
-            scene.add(mesh);
-                        
-            renderer.render(scene, camera);
-        })
+                    renderer.render(scene, camera);
+                })
 
 				//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				window.addEventListener( 'resize', onWindowResize, false );
@@ -235,7 +235,7 @@
 				camera.position.x += ( mouseX - camera.position.x ) * 0.01;
 				camera.position.y += ( - mouseY - camera.position.y ) * 0.01;
 				camera.position.z = - position + 8000;
-
+                fontMesh.position.z = -position + 8000 + 20;
 				renderer.render( scene, camera );
 
 			}

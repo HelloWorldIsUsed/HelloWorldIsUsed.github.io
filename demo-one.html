@@ -199,10 +199,11 @@
                     //文字材质
                     var materials = new THREE.MeshLambertMaterial({ color: 0xffffff });
                     fontMesh = new THREE.Mesh(g, materials);
-                
+                    scene.add(camera);
                     // 加入到场景中
                     camera.add(fontMesh);
-
+                    fontMesh.position.set( 0, 0, - 100 );
+                    
                     renderer.render(scene, camera);
                 })
 

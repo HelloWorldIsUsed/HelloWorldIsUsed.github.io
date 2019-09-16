@@ -178,10 +178,10 @@
                 loader.load('./fonts/helvetiker_bold.typeface.json', function (font) {
                     //init(font);
                     //animate();
-                    var dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
+                    var dirLight = new THREE.DirectionalLight( 0x5581c4, 0.125 );
 		        	dirLight.position.set( 0, 0, 1 ).normalize();
 		        	camera.add( dirLight );
-		        	var pointLight = new THREE.PointLight( 0xffffff, 1.5 );
+		        	var pointLight = new THREE.PointLight( 0x5581c4, 1.5 );
 		        	pointLight.position.set( 0, 100, 90 );
                     camera.add( pointLight );
                     // 文字
@@ -197,12 +197,14 @@
                     });
                     g.computeBoundingBox();
                     //文字材质
-                    var materials = new THREE.MeshLambertMaterial({ color: 0xffffff });
+                    var materials = new THREE.MeshLambertMaterial({ color: 0xf8f9fb });
+                    materials.transparent = true;
+                    materials.opacity = 0.4;
                     fontMesh = new THREE.Mesh(g, materials);
                     scene.add(camera);
                     // 加入到场景中
                     camera.add(fontMesh);
-                    fontMesh.position.set( 0, 0, - 500 );
+                    fontMesh.position.set( -10, 10, - 500 );
 
                     renderer.render(scene, camera);
                 })
